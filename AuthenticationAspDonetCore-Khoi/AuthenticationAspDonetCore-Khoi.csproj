@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <UserSecretsId>aspnet-AuthenticationAspDonetCore_Khoi-16D449E1-5891-4DFE-86F7-DACFF6AFB804</UserSecretsId>
+        <RootNamespace>AuthenticationAspDonetCore_Khoi</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.9" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.9" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.9" />
+    </ItemGroup>
+
+</Project>
