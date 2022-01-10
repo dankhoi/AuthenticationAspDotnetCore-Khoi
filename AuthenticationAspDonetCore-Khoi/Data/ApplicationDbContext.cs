@@ -15,5 +15,6 @@ namespace AuthenticationAspDonetCore_Khoi.Data
         }
         
         public DbSet<ApplicationUser> ApplicationUsers { set; get; }
+        public DbSet<Category> Categories { set; get; }
     }
 }
