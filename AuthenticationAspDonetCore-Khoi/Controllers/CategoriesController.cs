@@ -3,9 +3,8 @@ using AuthenticationAspDonetCore_Khoi.Data;
 using AuthenticationAspDonetCore_Khoi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-namespace AuthenticationAspDonetCore_Khoi.Controllers
-{
+namespace AuthenticationAspDotnetCore.Controllers
+{ 
     [Authorize]
     public class CategoriesController : Controller
     {
@@ -15,13 +14,16 @@ namespace AuthenticationAspDonetCore_Khoi.Controllers
             _db = db;
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var listAllData = _db.Categories.ToList();
             return View(listAllData);
         }
-        
 
+
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Upsert(int? id)
         {
@@ -29,12 +31,13 @@ namespace AuthenticationAspDonetCore_Khoi.Controllers
             {
                 return View(new Category());
             }
-
             var categories = _db.Categories.Find(id);
             return View(categories);
         }
-       
+
+
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult Upsert(Category category)
         {
             if (ModelState.IsValid)
@@ -45,17 +48,16 @@ namespace AuthenticationAspDonetCore_Khoi.Controllers
                     _db.SaveChanges();
                     return RedirectToAction(nameof(Index));
                 }
-
                 _db.Categories.Update(category);
                 _db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-
             return View(category);
-
         }
-     
+
+
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var categoryNeedToDelete = _db.Categories.Find(id);
@@ -64,5 +66,4 @@ namespace AuthenticationAspDonetCore_Khoi.Controllers
             return RedirectToAction(nameof(Index));
         }
     }
-    
 }
